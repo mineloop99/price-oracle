@@ -1,0 +1,30 @@
+{
+  "name": "oracle",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "None",
+  "license": "MIT",
+  "dependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.5",
+    "@nomiclabs/hardhat-truffle5": "^2.0.4",
+    "@nomiclabs/hardhat-waffle": "^2.0.3",
+    "@nomiclabs/hardhat-web3": "^2.0.0",
+    "@uniswap/v2-core": "^1.0.1",
+    "@uniswap/v2-periphery": "^1.1.0-beta.0",
+    "bignumber.js": "^9.0.1",
+    "chai": "^4.3.6",
+    "ethereum-waffle": "^3.4.0",
+    "ethereumjs-util": "^7.1.4",
+    "ethers": "^5.5.0",
+    "hardhat": "^2.6.6",
+    "mocha": "^9.1.3",
+    "prettier": "^2.4.1",
+    "prettier-plugin-solidity": "^1.0.0-beta.18",
+    "web3": "^1.6.0"
+  },
+  "devDependencies": {
+    "@types/mocha": "^9.1.1",
+    "ts-node": "^10.8.1",
+    "typescript": "^4.7.3"
+  }
+}
