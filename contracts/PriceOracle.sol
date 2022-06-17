@@ -31,11 +31,6 @@ contract PriceOracle is Ownable {
             tokenPriceFeed[_tokenAddress[i]] = _dataFeed[i];
         }
     }
-
-    function update() external {
-        
-    }
-
     function getPriceOfTokenInUsd(
             address tokenIn
         )
