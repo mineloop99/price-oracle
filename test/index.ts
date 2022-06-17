@@ -98,6 +98,10 @@ describe("Testing Price Oracle", function () {
         config.ethereum.factory
     );
     await priceOracle.deployed();
+    let update = await priceOracle.update(
+      config.ethereum.wrappedEth
+    )
+    await update.wait();
     let priceInUsd = await priceOracle.getPriceOfTokenInUsd(
       config.ethereum.wrappedEth
     )
