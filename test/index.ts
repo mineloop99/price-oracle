@@ -1,7 +1,7 @@
 import { expect } from "chai"; 
 import { Address } from "ethereumjs-util";
 const { ethers } = require("hardhat");
-import config from "./config.json";
+import config from "../config.json";
 const ADDRESS_ZERO = Address.fromString("0x0000000000000000000000000000000000000000");
 describe("Testing Price Oracle", function () {
   it("Deploy", async function () {
@@ -78,7 +78,7 @@ describe("Testing Price Oracle", function () {
   /*
     Price check if Chainlink provide 0x Address or priceInUsd = 0
   */
-  it("Check Price UniswapV2 Twap", async function () {
+  it("Check Price UniswapV3 Twap", async function () {
     // Check Price Feed with return func
     // getPriceOfTokenInUsd Args:
     /*
@@ -102,7 +102,6 @@ describe("Testing Price Oracle", function () {
       config.ethereum.wrappedEth
     )
     console.log("Price: ", priceInUsd[1], " Decimals: ", priceInUsd[0]);
-    console.log("Price: ", priceInUsd[1]," Decimals: ", priceInUsd[0]);
     expect(priceInUsd[1] > 0);
   });
 });

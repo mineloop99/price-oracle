@@ -65,15 +65,12 @@ contract PriceOracle is Ownable {
             }
         }
 
-        // (int24 tick, ) = OracleLibrary.consult(pool, secondsAgo);
-
-        // Code copied from OracleLibrary.sol, consult()
         uint32[] memory secondsAgos = new uint32[](2);
         secondsAgos[0] = 86400;
         secondsAgos[1] = 0;
 
         // int56 since tick * time = int24 * uint32
-        // 56 = 24 + 32
+        // 56 = 24 + 32 
         (int56[] memory tickCumulatives, ) = IUniswapV3Pool(_pool).observe(
             secondsAgos
         );
