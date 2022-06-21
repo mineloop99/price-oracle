@@ -1,12 +1,11 @@
-import { expect } from "chai"; 
+import { expect } from "chai";
 import { Address } from "ethereumjs-util";
 const { ethers } = require("hardhat");
-import config from "./config.json";
+import config from "../config.json";
 const ADDRESS_ZERO = Address.fromString("0x0000000000000000000000000000000000000000");
 describe("Testing Price Oracle", function () {
   it("Deploy", async function () {
     const PriceOracle = await ethers.getContractFactory("PriceOracle");
-    
     // Deploy Args:
     /*
         address _usdt,
@@ -28,7 +27,6 @@ describe("Testing Price Oracle", function () {
   */
   it("Check Price Aggregator ChainLink", async function () {
     const PriceOracle = await ethers.getContractFactory("PriceOracle");
-    
     // Deploy Args:
     /*
         address _usdt,
@@ -74,7 +72,6 @@ describe("Testing Price Oracle", function () {
     console.log("Price: ",priceInUsd[1]," Decimals: ", priceInUsd[0]);
     expect(priceInUsd[1] > 0);
   });
-
   /*
     Price check if Chainlink provide 0x Address or priceInUsd = 0
   */
@@ -85,7 +82,6 @@ describe("Testing Price Oracle", function () {
       address tokenIn(token address to be checked Ex:WrappedEth)
     */
     const PriceOracle = await ethers.getContractFactory("PriceOracle");
-    
     // Deploy Args:
     /*
         address _usdt,
@@ -102,10 +98,15 @@ describe("Testing Price Oracle", function () {
       config.ethereum.wrappedEth
     )
     await update.wait();
+    await new Promise(f => setTimeout(f, 30000));
+    await priceOracle.deployed();
+    update = await priceOracle.update(
+      config.ethereum.wrappedEth
+    )
+    await update.wait();
     let priceInUsd = await priceOracle.getPriceOfTokenInUsd(
       config.ethereum.wrappedEth
     )
-    console.log("Price: ", priceInUsd[1], " Decimals: ", priceInUsd[0]);
     console.log("Price: ", priceInUsd[1]," Decimals: ", priceInUsd[0]);
     expect(priceInUsd[1] > 0);
   });
