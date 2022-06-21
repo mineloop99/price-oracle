@@ -1,10 +1,18 @@
-# Advanced Sample Hardhat Project
+# Get Token Price Oracle On Eth-Base Enviroment
 
-This project demonstrates an advanced Hardhat use case, integrating other tools commonly used alongside Hardhat in the ecosystem.
+# Information:
 
-The project comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts. It also comes with a variety of other tools, preconfigured to work with the project code.
+- Calculate price oracle base on UniswapV3
+- Project with default typescripts unit test
+- Only deploy "contracts/PriceOracle.sol" files to take advantage
 
-Try running some of the following tasks:
+# Set up:
+
+- Set .env.Example files
+- Set config.json files chain or enviroment
+- Set up npm or yarn install dependencies.
+- Set "contracts/PriceOracle.sol" files with PERIODs value for testing or production
+- Use following command below
 
 ```shell
 npx hardhat accounts
