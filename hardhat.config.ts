@@ -1,26 +1,23 @@
 require("@nomiclabs/hardhat-waffle");
 
-// You need to export an object to set up your config
-// Go to https://hardhat.org/config/ to learn more
-
-/**
- * @type import('hardhat/config').HardhatUserConfig
- */
-
 module.exports = {
   networks: {
     hardhat: {
       forking: {
-        url: "https://speedy-nodes-nyc.moralis.io/9485086d85846cac9a1e6060/eth/mainnet/archive",
-        blockNumber: 14977426,
+        url: "https://api.avax.network/ext/bc/C/rpc",//Eth"https://speedy-nodes-nyc.moralis.io/9485086d85846cac9a1e6060/eth/mainnet/archive",
+        blockNumber: 16401849,//Eth 14977426,
         accounts: {
           accountsBalance: "10000000000000000000000000000",
         },
       },
     },
+    avalanche: {
+      url: "https://api.avax.network/ext/bc/C/rpc",
+      blockNumber: 16401849
+    },
   },
   mocha: {
-    timeout: 0
+    timeout: 50000
   },
   solidity:  {
     compilers: [
