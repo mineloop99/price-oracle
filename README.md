@@ -2,7 +2,7 @@
 
 # Information:
 
-- Calculate price oracle base on UniswapV2
+- Calculate price oracle base on UniswapV2 Factory and Pool
 - Project with default typescripts unit test
 - Only deploy "contracts/PriceOracle.sol" files to take advantage
 
