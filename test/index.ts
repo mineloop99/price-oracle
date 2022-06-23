@@ -1,8 +1,12 @@
 import { expect } from "chai";
 import { Address } from "ethereumjs-util";
+import { network } from "hardhat";
 const { ethers } = require("hardhat");
-import config from "../config.json";
+import getConfig from "../config.json";
+
+const NETWORKS:Array<string> = ["avalanche", "ethereum"];
 const ADDRESS_ZERO = Address.fromString("0x0000000000000000000000000000000000000000");
+const config = getConfig[NETWORKS[0] as keyof typeof getConfig]; 
 describe("Testing Price Oracle", function () {
   it("Deploy", async function () {
     const PriceOracle = await ethers.getContractFactory("PriceOracle");
@@ -13,14 +17,14 @@ describe("Testing Price Oracle", function () {
         address _factory
     */
     const priceOracle = await PriceOracle.deploy(
-      config.ethereum.usdt,
-      config.ethereum.usdc,
-      config.ethereum.factory
+      config.usdt,
+      config.usdc,
+      config.factory
     );
     await priceOracle.deployed();
-    expect(priceOracle.usdt != config.ethereum.usdt);
-    expect(priceOracle.usdc != config.ethereum.usdc)
-    expect(priceOracle.factory != config.ethereum.factory)
+    expect(priceOracle.usdt != config.usdt);
+    expect(priceOracle.usdc != config.usdc)
+    expect(priceOracle.factory != config.factory)
   });
   /*
     Price check if Chainlink provide existing Address
@@ -34,9 +38,9 @@ describe("Testing Price Oracle", function () {
         address _factory
     */
     const priceOracle = await PriceOracle.deploy(
-        config.ethereum.usdt,
-        config.ethereum.usdc,
-        config.ethereum.factory
+        config.usdt,
+        config.usdc,
+        config.factory
     );
     await priceOracle.deployed();
     // Add data feed base on price of token Address use Token/USD data Feed only
@@ -50,8 +54,8 @@ describe("Testing Price Oracle", function () {
       ]
     */
     const addDataFeedAddress = await priceOracle.addDataFeedAddress(
-      [config.ethereum.wrappedEth],
-      [config.ethereum.dataFeed["eth"]]
+      [config.wrappedEth],
+      [config.dataFeed["eth"]]
     )
     await addDataFeedAddress.wait();
     // Check Price Feed with return func
@@ -67,7 +71,7 @@ describe("Testing Price Oracle", function () {
       ]
     */
     let priceInUsd = await priceOracle.getPriceOfTokenInUsd(
-      config.ethereum.wrappedEth
+      config.wrappedEth
     )
     console.log("Price: ",priceInUsd[1]," Decimals: ", priceInUsd[0]);
     expect(priceInUsd[1] > 0);
@@ -89,23 +93,23 @@ describe("Testing Price Oracle", function () {
         address _factory
     */
     const priceOracle = await PriceOracle.deploy(
-        config.ethereum.usdt,
-        config.ethereum.usdc,
-        config.ethereum.factory
+        config.usdt,
+        config.usdc,
+        config.factory
     );
     await priceOracle.deployed();
     let update = await priceOracle.update(
-      config.ethereum.wrappedEth
+      config.wrappedEth
     )
     await update.wait();
     await new Promise(f => setTimeout(f, 30000));
     await priceOracle.deployed();
     update = await priceOracle.update(
-      config.ethereum.wrappedEth
+      config.wrappedEth
     )
     await update.wait();
     let priceInUsd = await priceOracle.getPriceOfTokenInUsd(
-      config.ethereum.wrappedEth
+      config.wrappedEth
     )
     console.log("Price: ", priceInUsd[1]," Decimals: ", priceInUsd[0]);
     expect(priceInUsd[1] > 0);

@@ -7,5 +7,16 @@
         "dataFeed": {
             "eth": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419"
         }
+    },
+    "avalanche": {
+        "usdt": "0xc7198437980c041c805A1EDcbA50c1Ce5db95118",
+        "usdc": "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
+        "factory": "0x9Ad6C38BE94206cA50bb0d90783181662f0Cfa10",
+        "wrappedAvax": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+        "wrappedEth": "0x49D5c2BdFfac6CE2BFdB6640F4F80f226bc10bAB",
+        "dataFeed": {
+            "eth": "0x976B3D034E162d8bD72D6b9C989d545b839003b0",        
+            "avax": "0x0A77230d17318075983913bC2145DB16C7366156"
+        }
     }
 }
